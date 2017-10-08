@@ -46,6 +46,11 @@ if [ "$ENV_MODE_BROWSE_ONLY" == "true" ]; then
   echo "export APACHE_ARGUMENTS='-D FRONTEND_BROWSE_ONLY_MODE'" >> /etc/apache2/envvars
 fi
 
+# Set basepath
+[[ -z "$ENV_BASEPATH" ]] && ENV_BASEPATH="/" 
+sed "s;##BASEPATH##;${ENV_BASEPATH};g" /var/www/html/index.html.orig > /var/www/html/index.html
+
+
 # Optionally enable Kerberos authentication and do some parameter checks
 if [ -n "$ENV_AUTH_USE_KERBEROS" ]; then
 
