@@ -47,8 +47,11 @@ if [ "$ENV_MODE_BROWSE_ONLY" == "true" ]; then
 fi
 
 # Set basepath
-[[ -z "$ENV_BASEPATH" ]] && ENV_BASEPATH="/" 
-sed "s;##BASEPATH##;${ENV_BASEPATH};g" /var/www/html/index.html.orig > /var/www/html/index.html
+[[ -z "$ENV_BASEPATH" ]] && ENV_BASEPATH="/"
+if [ -e /var/www/html/index.orig.html ]; then
+    sed "s;##BASEPATH##;${ENV_BASEPATH};g" /var/www/html/index.orig.html > /var/www/html/index.html
+    rm -f /var/www/html/index.orig.html
+fi
 
 
 # Optionally enable Kerberos authentication and do some parameter checks
