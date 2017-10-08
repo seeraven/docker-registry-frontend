@@ -64,10 +64,6 @@ angular
         templateUrl: 'repository/repository-detail.html',
         controller: 'RepositoryDetailController'
       }).
-      when('/repository/:repositoryUser', {
-        templateUrl: 'repository/repository-detail.html',
-        controller: 'RepositoryDetailController'
-      }).
       when('/repository/:repositoryName', {
         templateUrl: 'repository/repository-detail.html',
         controller: 'RepositoryDetailController'
